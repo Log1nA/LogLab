@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace Log_Lab_1
+namespace LogLab1
 {
     //•	абстрактный базовый класс V2Data и два производных от него класса V2DataList и V2DataArray;
     //в классе V2DataArray данные измерений хранятся в одномерных и двумерных массивах,
@@ -15,12 +15,12 @@ namespace Log_Lab_1
     {
         //Абстрактный базовый класс V2Data содержит открытые
         //•	два автореализуемых свойства типа string и DateTime; свойство типа string можно трактовать как ключ объекта;
-        public string Key { get; set; }
+        public string key { get; set; }
         public DateTime dateTime { get; set; }
         //•	конструктор с параметрами типа string и DateTime;
         public V2Data(string Key, DateTime DateTime)
         {
-            this.Key = Key;
+            this.key = Key;
             this.dateTime = DateTime;
         }
         //•	абстрактное свойство MinField типа double (только с методом get);
@@ -31,6 +31,6 @@ namespace Log_Lab_1
         //•	абстрактный метод string ToLongString(string format);
         public abstract string ToLongString(string format);
         //•	перегруженную (override) версию виртуального метода string ToString();
-        public override string ToString() => $"Key {Key}, Date and Time:{dateTime}";
+        public override string ToString() => $"Key {key}, Date and Time:{dateTime}";
     }
 }

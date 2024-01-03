@@ -1,5 +1,4 @@
-﻿using Log_Lab_1;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -18,7 +17,7 @@ using System.Threading.Tasks;
 //Вариант 2
 //В лабораторной работе надо определить типы для работы с данными измерений значений поля на одномерной сетке:
 
-namespace Log_Lab_1 {
+namespace LogLab1 {
     //•	struct DataItem для хранения данных, связанных с одной точкой;
     public struct DataItem {
         //Структура DataItem содержит открытые автореализуемые свойства
@@ -38,7 +37,7 @@ namespace Log_Lab_1 {
         //параметр format задает формат вывода чисел с плавающей запятой; 
         public string ToLongString(string format)
         {
-            return string.Format(format, X, Y[0], Y[1]);
+            return $"X: {string.Format(format, X)} Y: [{string.Format(format, Y[0])}, {string.Format(format, Y[1])}]";
         }
         //•	перегруженная (override) версия виртуального метода string ToString().
         public override string ToString()
@@ -49,14 +48,43 @@ namespace Log_Lab_1 {
     //    •	абстрактный базовый класс V2Data и два производных от него класса V2DataList и V2DataArray;
     partial class V2data { }
     //    в классе V2DataArray данные измерений хранятся в одномерных и двумерных массивах, в классе V2DataList данные измерений хранятся в коллекции List<DataItem>;
-    abstract partial class V2Datalist : V2Data { }
-    abstract partial class V2DataArray : V2Data { }
+    partial class V2DataList : V2Data { }
+    partial class V2DataArray : V2Data { }
 
     //•	класс V2MainCollection для коллекции объектов типа V2DataList и V2DataArray;
     partial class V2MainCollection { }
+
     //•	делегат void FValues(double x, ref double y1, ref double y2);
     public delegate void FValues(double x, ref double y1, ref double y2);
 
     //•	делегат DataItem FDI(double x);
     public delegate DataItem FDI(double x);
+
+    //Статические методы, отвечающие делегатам FValues и FDI, можно определить в отдельном статическом классе или в одном из перечисленных выше типов.
+    public static class Functions
+    {
+        //Объект изучений - газ под поршнем, однако комнатная температура непостоянна
+        //Пусть x = уровень на который опускается поршень, относительно спокойного положения
+        //Тогда y1 - значение температуры, а y2 - 
+        //Газ - Аргон, температура колеблется в пределах нормы - [273,298] градусов Кельвина
+        const double n = 0.01;    //моль - Кол-во в-ва
+        const double R = 8.3144e07;     //Газовая постоянная
+        const double S = 2241.3962;     //куб.см - Площадь сечения поршня
+        const double idealTemp = 285.5;
+        const double startP = 100; //см - Начальное положение поршня
+        const double idealP = (n * R * idealTemp) / (startP * S); // Изначальное давление
+
+        public static void F(double x, ref double y1, ref double y2)
+        {
+            Random rnd = new Random();
+            y1 = rnd.Next(273, 299);
+            y2 = idealP + ((n * R * y1) / (x * S));
+        }
+        public static DataItem F(double x)
+        {
+            DataItem dataItem = new DataItem();
+            F(x, ref dataItem.Y[0], ref dataItem.Y[1]);
+            return dataItem;
+        }
+    }
 }
