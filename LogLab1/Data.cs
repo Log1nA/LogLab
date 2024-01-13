@@ -72,7 +72,7 @@ namespace LogLab1 {
         const double S = 2241.3962;     //куб.см - Площадь сечения поршня
         const double idealTemp = 285.5;
         const double startP = 100; //см - Начальное положение поршня
-        const double idealP = (n * R * idealTemp) / (startP * S); // Изначальное давление
+        public const double idealP = (n * R * idealTemp) / (startP * S); // Изначальное давление
 
         public static void F(double x, ref double y1, ref double y2)
         {
@@ -82,7 +82,7 @@ namespace LogLab1 {
         }
         public static DataItem F(double x)
         {
-            DataItem dataItem = new DataItem();
+            DataItem dataItem = new DataItem(x, 0, 0);
             F(x, ref dataItem.Y[0], ref dataItem.Y[1]);
             return dataItem;
         }

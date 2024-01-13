@@ -44,25 +44,31 @@ namespace LogLab1
         {
             FValues F1 = Functions.F;
             FDI F2 = Functions.F;
+            Random rnd = new Random();
             for (int i = 0; i < nV2DataArray; i++)
-            {
-                double[] grid = { 5 * (i + 1), 10 * (i + 1), 15 * (i + 1) };
-                Add(new V2DataArray("nV2array", DateTime.Now, grid, F1));
+            {   
+                double[] grid = { rnd.Next(-100, 100), rnd.Next(-100, 100)};
+                base.Add(new V2DataArray("nV2array", DateTime.Now, grid, F1));
+                Console.WriteLine("Beep\n");
             }
 
             for (int i = 0; i < nV2DataList; i++)
             {
-                double[] grid = { 5 * (-i - 1), 10 * (-i - 1), 15 * (-i - 1) };
-                Add(new V2DataList("nV2list", DateTime.Now, grid, F2));
+                double[] grid = { rnd.Next(-100, 100), rnd.Next(-100, 100)};
+                base.Add(new V2DataList("nV2list", DateTime.Now, grid, F2));
+                Console.WriteLine("Boop\n");
             }
         }
         //•	открытый метод string ToLongString (string format), который возвращает строку с информацией о каждом элементе коллекции; при создании строки для каждого элемента коллекции вызывается метод ToLongString (string format);
         public string ToLongString(string format)
         {
-            string str = " ";
-            for (var i = 0; i < Count; i++)
+            string str = $"Object type: {this.GetType()}\nCollection contains {Count} elements.\n";
+            if(Count != 0)
             {
-                str += this[i].ToLongString(format) + "\n";
+                for (var i = 0; i < Count; i++)
+                {
+                    str += $"{i+1}.{this[i].ToLongString(format)} \n";
+                }
             }
             return str;
         }
