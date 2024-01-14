@@ -49,14 +49,12 @@ namespace LogLab1
             {   
                 double[] grid = { rnd.Next(-100, 100), rnd.Next(-100, 100)};
                 base.Add(new V2DataArray("nV2array", DateTime.Now, grid, F1));
-                Console.WriteLine("Beep\n");
             }
 
             for (int i = 0; i < nV2DataList; i++)
             {
                 double[] grid = { rnd.Next(-100, 100), rnd.Next(-100, 100)};
                 base.Add(new V2DataList("nV2list", DateTime.Now, grid, F2));
-                Console.WriteLine("Boop\n");
             }
         }
         //•	открытый метод string ToLongString (string format), который возвращает строку с информацией о каждом элементе коллекции; при создании строки для каждого элемента коллекции вызывается метод ToLongString (string format);

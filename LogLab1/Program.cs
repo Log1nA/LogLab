@@ -43,13 +43,12 @@ namespace LogLab1 {
             //4.Для всех элементов из V2MainCollection вывести значения свойства MinField.
 
             Console.WriteLine("Выполнение 4-го пункта:\n");
-            foreach (var item in v23MainCollection) {
-                Console.WriteLine($"{item.ToString()}    MinField: {item.MinField}\n");
+            foreach (var item in v23MainCollection)
+            {
+                Console.WriteLine($"{item.ToString()}    MinField: {item.MinField}");
             }
 
-            Console.WriteLine("Debug\n");
-            Console.WriteLine(Functions.idealP.ToString());
-
+            //Console.WriteLine("Debug\n");
         }
     }
 }
