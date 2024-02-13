@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace LogLab1
+namespace LogLab
 {
     //Класс V2MainCollection определяется как производный от класса System.Collections.ObjectModel.ObservableCollection<V2Data>.
     //Коллекция базового класса содержит элементы типа V2DataList и V2DataArray.

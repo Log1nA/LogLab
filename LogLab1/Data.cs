@@ -16,7 +16,7 @@ using System.Threading.Tasks;
 //Вариант 2
 //В лабораторной работе надо определить типы для работы с данными измерений значений поля на одномерной сетке:
 
-namespace LogLab1 {
+namespace LogLab {
     //•	struct DataItem для хранения данных, связанных с одной точкой;
     public struct DataItem {
         //Структура DataItem содержит открытые автореализуемые свойства

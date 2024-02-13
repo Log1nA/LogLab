@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 
-namespace LogLab1
+namespace LogLab
 {
     //•	абстрактный базовый класс V2Data и два производных от него класса V2DataList и V2DataArray;
     //в классе V2DataArray данные измерений хранятся в одномерных и двумерных массивах,

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace LogLab1
+namespace LogLab
 {
     //Класс V2DataList является производным от класса V2Data. В классе V2DataList данные измерений хранятся в коллекции List<DataItem>.
     //Среди элементов DataItem, входящих в коллекцию List<DataItem>, не должно быть элементов с совпадающими значениями координат x, в которых измеряется поле.

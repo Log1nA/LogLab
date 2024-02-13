@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
-namespace LogLab1
+namespace LogLab
 {
     //Класс V2DataArray определяется как производный от абстрактного базового класса V2Data.
     //В классе V2DataArray в массиве типа double[] хранятся координаты x, в которых измерено поле,
@@ -43,6 +43,8 @@ namespace LogLab1
             for (int i = 0; i < X.Length; i++)
             {
                 F(X[i], ref Y[0,i], ref Y[1,i]);
+                //Y[0, i] = 0;
+                //Y[1, i] = 0;
             }
         }
         //•	конструктор V2DataArray(string key, DateTime date, int nX, double xL, double xR, FValues F),
